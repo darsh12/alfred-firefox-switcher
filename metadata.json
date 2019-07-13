@@ -1,0 +1,13 @@
+{
+  "alfredworkflow" : {
+    "category" : "Internet",
+    "readme" : "Inspired by: https:\/\/github.com\/m4dz\/alfred-firefox-profile-launcher\n\nThis workflow uses python in order to launch different firefox profiles. This workflow can also launch Firefox Developer Edition while pressing the alt key.",
+    "createdby" : "darsh12",
+    "downloadurl" : "",
+    "version" : "1.0",
+    "bundleid" : "com.darsh12.firefoxswitcher",
+    "description" : "Switch firefox profiles",
+    "name" : "Firefox Switcher",
+    "webaddress" : "github.com\/darsh12"
+  }
+}
