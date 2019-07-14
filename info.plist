@@ -317,6 +317,8 @@ Self-updating feature to grab the latest release</string>
 			<integer>10</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>1.2</string>
 	<key>webaddress</key>
