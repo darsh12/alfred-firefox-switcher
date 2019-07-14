@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.darsh12.firefoxswitcher</string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>35EA4ECC-C7A8-4D58-AF6F-CB1AB3A2D72C</key>
+		<array/>
+		<key>54EAE446-DC21-4B16-A958-DC2E88F231EB</key>
+		<array/>
+		<key>81D9623A-1FBD-4B0E-9079-FB2052073F98</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>54EAE446-DC21-4B16-A958-DC2E88F231EB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>35EA4ECC-C7A8-4D58-AF6F-CB1AB3A2D72C</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Launching Firefox Developer Edition</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>darsh12</string>
+	<key>description</key>
+	<string>Switch firefox profiles</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Firefox Switcher</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>foxy</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>import os, ConfigParser
+import json
+
+config = ConfigParser.ConfigParser()
+config.read(os.path.expanduser('~/Library/Application Support/Firefox/profiles.ini'))
+
+profiles = []
+
+# Loop over all the sections in the config file
+for name in config.sections():
+    try:
+        # Get the Name from each firefox profile
+        profile_names = config.get(name, "Name")
+        # Append the profile name to the appropriate json keys
+        config_dict = {"uid": profile_names, "type": "default", "title": profile_names,
+                       "subtitle": name + " : " + profile_names,
+                       "autocomplete": profile_names, "arg": profile_names}
+        # Append each config_dict the the profiles list
+        profiles.append(config_dict)
+        # In the event there is a profile with no Name, skip over it
+    except ConfigParser.NoOptionError:
+        continue
+
+# Convert the profiles list to a json object
+json_convert = json.dumps(profiles, sort_keys=True, indent=2)
+# Append the items to the json object then print it
+print "{\"items\":  %s }" % json_convert
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Choose profile...</string>
+				<key>title</key>
+				<string>Firefox profile changer</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>81D9623A-1FBD-4B0E-9079-FB2052073F98</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1	# This is the the arg variable from the script filter
+
+# Launch the firefox
+/Applications/Firefox.app/Contents/MacOS/firefox -P --no-remote $query &amp;</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>54EAE446-DC21-4B16-A958-DC2E88F231EB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1	# This is the the arg variable from the script filter
+
+# Launch the firefox
+/Applications/FirefoxDeveloperEdition.app/Contents/MacOS/firefox -P --no-remote $query &amp;</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>35EA4ECC-C7A8-4D58-AF6F-CB1AB3A2D72C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Inspired by: https://github.com/m4dz/alfred-firefox-profile-launcher
+
+This workflow uses python in order to launch different firefox profiles. This workflow can also launch Firefox Developer Edition while pressing the alt key.</string>
+	<key>uidata</key>
+	<dict>
+		<key>35EA4ECC-C7A8-4D58-AF6F-CB1AB3A2D72C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>315</integer>
+			<key>ypos</key>
+			<integer>360</integer>
+		</dict>
+		<key>54EAE446-DC21-4B16-A958-DC2E88F231EB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>160</integer>
+			<key>ypos</key>
+			<integer>140</integer>
+		</dict>
+		<key>81D9623A-1FBD-4B0E-9079-FB2052073F98</key>
+		<dict>
+			<key>xpos</key>
+			<integer>395</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>github.com/darsh12</string>
+</dict>
+</plist>
