@@ -105,13 +105,13 @@ print "{\"items\":  %s }" % json_convert
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>source/script.py</string>
 				<key>subtext</key>
 				<string>Choose profile...</string>
 				<key>title</key>
 				<string>Firefox profile changer</string>
 				<key>type</key>
-				<integer>3</integer>
+				<integer>8</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -206,8 +206,8 @@ This workflow uses python in order to launch different firefox profiles. This wo
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>webaddress</key>
-	<string>github.com/darsh12</string>
+	<string>https://github.com/darsh12/alfred-firefox-switcher</string>
 </dict>
 </plist>
