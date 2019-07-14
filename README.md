@@ -5,7 +5,7 @@
 * Launch Firefox Developer Edition while pressing the alt key.
 * Auto-updating feature to grab the latest workflow releases
 
-##Usage 
+## Usage 
 ![Usage](https://i.imgur.com/YjYyzrG.png)
 
 ## Credits
