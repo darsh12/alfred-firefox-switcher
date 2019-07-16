@@ -14,6 +14,7 @@
 * https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater
 
 ## License
-GNU-GPL v3
-
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdarsh12%2Falfred-firefox-switcher.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdarsh12%2Falfred-firefox-switcher?ref=badge_large)
+
+GPL v3
+
