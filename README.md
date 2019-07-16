@@ -13,4 +13,4 @@
 * https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater
 
 ## License
-GNU-GPL v3
+GPL v3
